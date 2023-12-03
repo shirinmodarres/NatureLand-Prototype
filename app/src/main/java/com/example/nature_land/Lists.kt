@@ -5,7 +5,7 @@ import com.example.nature_land.model.Brand
 import com.example.nature_land.model.Category
 import com.example.nature_land.model.Product
 
-enum class Brands(brand: Brand) {
+enum class Brands(val brand: Brand) {
     NATURE_LAND(
         Brand(
             "Natureland",

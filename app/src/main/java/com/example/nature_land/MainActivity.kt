@@ -35,7 +35,18 @@ class MainActivity : ComponentActivity() {
         val mainRecyclerView: RecyclerView = findViewById(R.id.mainRecyclerView)
         mainRecyclerView.layoutManager = layoutManager
         val mainAdapter = MainAdapter()
-        mainAdapter.bindDataSet(listOf(HomeItem.Banners(bannerList),HomeItem.Categories(categoryList)))
+        mainAdapter.bindDataSet(
+            listOf(
+                HomeItem.Banners(bannerList),
+                HomeItem.Categories(categoryList),
+                HomeItem.DiscountedProducts(discounted),
+                HomeItem.NewFromNatureLand(newFromNatureland),
+                HomeItem.NewFromOtherBrands(newFromOtherBrands),
+                HomeItem.ViewAllProductsBanner(listOf(Banner(R.drawable.view_all_products_banner,"View All Products"))),
+                HomeItem.ShopByBrands(Brands.values().toList()),
+                HomeItem.BestSelling(bestSelling)
+            )
+        )
         mainRecyclerView.adapter = mainAdapter
 
     }

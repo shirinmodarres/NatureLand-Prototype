@@ -4,4 +4,7 @@
     <dimen name="dot_unselected_size">8dp</dimen>
     <dimen name="dot_margin">4dp</dimen>
     <dimen name="header_text_size">20sp</dimen>
+    <dimen name="strike_weight">12.8</dimen>
+    <dimen name="main_margin">20dp</dimen>
+
 </resources>

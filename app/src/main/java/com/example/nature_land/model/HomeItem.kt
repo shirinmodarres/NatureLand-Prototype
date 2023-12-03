@@ -11,6 +11,7 @@ sealed class HomeItem {
     data class DiscountedProducts(val list: List<ProductModel>) : HomeItem()
     data class NewFromNatureLand(val list: List<ProductModel>) : HomeItem()
     data class NewFromOtherBrands(val list: List<ProductModel>) : HomeItem()
+    data class ViewAllProductsBanner(val list: List<BannerModel>) : HomeItem()
     data class ShopByBrands(val list: List<BrandModel>) : HomeItem()
     data class BestSelling(val list: List<ProductModel>) : HomeItem()
 }
