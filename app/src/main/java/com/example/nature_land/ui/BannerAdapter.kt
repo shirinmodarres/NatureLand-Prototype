@@ -26,7 +26,7 @@ class BannerAdapter :
 
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         val banner = bannerList[position]
-        holder.bannerImageView.setImageResource(banner.bannerImageView)
+        holder.bannerImageView.setImageResource(banner.imageView)
     }
 
     fun bindDataSet(dataset: List<Banner>) {

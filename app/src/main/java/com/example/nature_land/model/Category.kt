@@ -1,3 +1,3 @@
 package com.example.nature_land.model
 
-data class Category(val categoryImageView: Int, val name: String)
+data class Category(val imageView: Int, val name: String)

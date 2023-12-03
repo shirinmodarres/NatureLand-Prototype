@@ -29,7 +29,7 @@ class CategoryAdapter :
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = categoryList[position]
-        holder.categoryImage.setImageResource(category.categoryImageView)
+        holder.categoryImage.setImageResource(category.imageView)
         holder.categoryTitle.text = category.name
 
     }
