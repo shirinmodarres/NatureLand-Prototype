@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/category_header"
+        android:id="@+id/product_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -16,7 +16,7 @@
         android:layout_marginRight="20dp"
         >
         <TextView
-            android:id="@+id/category_header_title"
+            android:id="@+id/product_header_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +27,7 @@
             android:textSize="@dimen/header_text_size"/>
 
         <ImageView
-            android:id="@+id/category_button"
+            android:id="@+id/product_header_button"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:src="@drawable/arrow_icon"
@@ -38,14 +38,14 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/category_recycleview"
+        android:id="@+id/product_recycleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/category_header"
+        android:layout_below="@id/product_header"
         android:layout_centerHorizontal="true"
         android:baselineAligned="false"
         android:gravity="center"
         android:orientation="horizontal"
-         />
+        />
 
 </RelativeLayout>

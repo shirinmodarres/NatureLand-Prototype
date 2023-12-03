@@ -15,13 +15,13 @@ class CategoryAdapter :
     private val categoryList= mutableListOf<Category>()
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val categoryImage: ImageView = itemView.findViewById(R.id.categoryImage)
-        val categoryTitle: TextView = itemView.findViewById(R.id.categoryTitle)
+        val categoryImage: ImageView = itemView.findViewById(R.id.category_image)
+        val categoryTitle: TextView = itemView.findViewById(R.id.category_title)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.category_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.category_cell, parent, false)
         return CategoryViewHolder(view)
     }
 

@@ -3,16 +3,12 @@ package com.example.nature_land.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.SnapHelper
 import com.example.nature_land.R
-import com.example.nature_land.bannerList
-import com.example.nature_land.categoryList
 import com.example.nature_land.model.Banner
 import com.example.nature_land.model.Category
 import com.example.nature_land.model.HomeItem
@@ -52,6 +48,8 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder as CategoryRecyclerViewHolder
                 holder.onBind((mutableDataSet[position] as HomeItem.Categories).list)
             }
+
+            else -> {}
         }
     }
 
@@ -61,6 +59,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return when (mutableDataSet[position]) {
             is HomeItem.Banners -> 1
             is HomeItem.Categories -> 2
+            else -> {0}
         }
     }
 
@@ -89,15 +88,16 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class CategoryRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val categoryHeaderTitle :TextView = itemView.findViewById(R.id.category_header_title)
         private val categoryRecyclerView: RecyclerView =
             itemView.findViewById(R.id.category_recycleview)
         private val categoryAdapter = CategoryAdapter()
-
 
         init {
             val layoutManager =
                 LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
 
+            categoryHeaderTitle.text="Categories"
             categoryRecyclerView.setHasFixedSize(true)
             categoryRecyclerView.layoutManager = layoutManager
 
@@ -106,9 +106,6 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun onBind(dataset: List<Category>) {
             categoryAdapter.bindDataSet(dataset)
         }
-
-
-
 
     }
 

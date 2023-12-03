@@ -6,19 +6,37 @@ import com.example.nature_land.model.Category
 import com.example.nature_land.model.Product
 
 enum class Brands(brand: Brand) {
-    NATURE_LAND(Brand("Natureland", R.drawable.natureland)), EARTH(
+    NATURE_LAND(
+        Brand(
+            "Natureland",
+            R.drawable.natureland
+        )
+    ),
+    EARTH(
         Brand(
             "Earth",
             R.drawable.earth
         )
     ),
-    BONATO(Brand("Bonato", R.drawable.bonato)), RAHA_BAKEHOUSE(
+    BONATO(
+        Brand(
+            "Bonato",
+            R.drawable.bonato
+        )
+    ),
+    RAHA_BAKEHOUSE(
         Brand(
             "Raha Bakehouse",
             R.drawable.raha_bakehouse
         )
     ),
-    NABAT(Brand("Nabat", R.drawable.nabat)), RAPUNZEL(
+    NABAT(
+        Brand(
+            "Nabat",
+            R.drawable.nabat
+        )
+    ),
+    RAPUNZEL(
         Brand(
             "Rapunzel",
             R.drawable.rapunzel
@@ -33,7 +51,8 @@ enum class Brands(brand: Brand) {
     VITAL_PROTEINS(
         Brand(
             "Vital Proteins",
-            R.drawable.vital_proteins)
+            R.drawable.vital_proteins
+        )
     ),
     PUKKA(
         Brand(

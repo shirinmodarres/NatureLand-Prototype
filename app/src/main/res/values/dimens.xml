@@ -3,4 +3,5 @@
     <dimen name="dot_selected_size">12dp</dimen>
     <dimen name="dot_unselected_size">8dp</dimen>
     <dimen name="dot_margin">4dp</dimen>
+    <dimen name="header_text_size">20sp</dimen>
 </resources>

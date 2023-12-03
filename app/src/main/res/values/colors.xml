@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="selected_dot_color">#004729</color>
+    <color name="red">#b33e43</color>
+
 </resources>
