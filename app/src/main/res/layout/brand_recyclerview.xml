@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="TextView"
             android:textStyle="bold"
+            android:ellipsize="end"
             android:textSize="@dimen/header_text_size"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -37,7 +38,7 @@
         android:baselineAligned="false"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/main_margin"
+        android:layout_marginTop="@dimen/recyclerview_margin"
         />
 
 </RelativeLayout>

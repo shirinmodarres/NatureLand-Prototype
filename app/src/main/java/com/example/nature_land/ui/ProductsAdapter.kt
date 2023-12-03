@@ -40,14 +40,18 @@ class ProductsAdapter
         holder.productName.text = product.name
         holder.productBrand.text = product.brand.brand.name
         if (product.newPrice != 0.000) {
-            val oldPriceString = SpannableString("KD ${product.oldPrice}")
-            oldPriceString.setSpan(StrikethroughSpan(), 0, oldPriceString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
+            val oldPriceString = SpannableString("KD ${String.format("%.3f", product.oldPrice)}")
+            oldPriceString.setSpan(
+                StrikethroughSpan(),
+                0,
+                oldPriceString.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
             holder.productOldPrice.text = oldPriceString
-            holder.productNewPrice.text = "KD ${product.newPrice}"
+            holder.productNewPrice.text = "KD ${String.format("%.3f", product.newPrice)}"
 
         } else {
-            holder.productNewPrice.text = "KD ${product.oldPrice}"
+            holder.productNewPrice.text = "KD ${String.format("%.3f", product.oldPrice)}"
         }
 
     }
