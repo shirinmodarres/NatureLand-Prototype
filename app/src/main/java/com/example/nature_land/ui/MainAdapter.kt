@@ -4,11 +4,13 @@ import android.os.HardwarePropertiesManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewParent
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import androidx.viewpager.widget.ViewPager
 import com.example.nature_land.Brands
 import com.example.nature_land.R
 import com.example.nature_land.model.Banner
@@ -140,25 +142,17 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class BannerRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val bannerRecyclerView: RecyclerView =
-            itemView.findViewById(R.id.banner_recycleView)
+        private val bannerRecyclerView: ViewPager =
+            itemView.findViewById(R.id.banner_viewpager)
         private val bannerAdapter = BannerAdapter()
 
         init {
-            bannerRecyclerView.setHasFixedSize(true)
-            val layoutManager =
-                LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-
-            bannerRecyclerView.layoutManager = layoutManager
-
             bannerRecyclerView.adapter = bannerAdapter
-
-            val snapHelper: SnapHelper = LinearSnapHelper()
-            snapHelper.attachToRecyclerView(bannerRecyclerView)
         }
 
         fun onBind(dataset: List<Banner>) {
             bannerAdapter.bindDataSet(dataset)
+            bannerAdapter.notifyDataSetChanged()
         }
     }
 
