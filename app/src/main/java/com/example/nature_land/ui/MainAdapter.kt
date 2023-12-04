@@ -1,20 +1,15 @@
 package com.example.nature_land.ui
 
-import android.os.HardwarePropertiesManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.nature_land.Brands
 import com.example.nature_land.R
 import com.example.nature_land.model.Banner
-import com.example.nature_land.model.Brand
 import com.example.nature_land.model.Category
 import com.example.nature_land.model.HomeItem
 import com.example.nature_land.model.Product
@@ -142,16 +137,25 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class BannerRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val bannerRecyclerView: ViewPager =
+        private val bannerViewPager: ViewPager2 =
             itemView.findViewById(R.id.banner_viewpager)
         private val bannerAdapter = BannerAdapter()
 
         init {
-            bannerRecyclerView.adapter = bannerAdapter
+            bannerViewPager.adapter = bannerAdapter
+            bannerViewPager.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    bannerAdapter.updateDotIndicator(itemView, bannerViewPager, position)
+                }
+            })
         }
 
         fun onBind(dataset: List<Banner>) {
             bannerAdapter.bindDataSet(dataset)
+            bannerViewPager.post {
+                bannerAdapter.updateDotIndicator(itemView, bannerViewPager, 0)
+            }
             bannerAdapter.notifyDataSetChanged()
         }
     }
@@ -213,10 +217,13 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             val layoutManager =
                 LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
 
+
             brandRecyclerView.setHasFixedSize(true)
             brandRecyclerView.layoutManager = layoutManager
 
             brandRecyclerView.adapter = brandAdapter
+
+
         }
 
         fun onBind(dataset: List<Brands>, header: String) {
