@@ -15,6 +15,7 @@ import com.example.nature_land.model.HomeItem
 import com.example.nature_land.model.Product
 
 class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+   private val viewPool = RecyclerView.RecycledViewPool()
 
     private val mutableDataSet = mutableListOf<HomeItem>()
 
@@ -193,6 +194,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         init {
             val layoutManager =
                 LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
+            productRecyclerView.setRecycledViewPool(viewPool)
 
             productRecyclerView.setHasFixedSize(true)
             productRecyclerView.layoutManager = layoutManager
@@ -222,8 +224,6 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             brandRecyclerView.layoutManager = layoutManager
 
             brandRecyclerView.adapter = brandAdapter
-
-
         }
 
         fun onBind(dataset: List<Brands>, header: String) {
@@ -231,27 +231,4 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             brandHeaderTitle.text = header
         }
     }
-
-    /*    fun updateDotIndicator(itemView: View, currentPosition: Int) {
-            val dotIndicator: LinearLayout = itemView.findViewById(R.id.dotIndicator)
-
-            dotIndicator.removeAllViews()
-
-            val itemCount = bannerAdapter.itemCount
-            for (i in 0 until itemCount) {
-                val dotView = View(context)
-                val dotSize =
-                    resources.getDimensionPixelSize(if (i == currentPosition) R.dimen.dot_selected_size else R.dimen.dot_unselected_size)
-                val dotMargin = resources.getDimensionPixelSize(R.dimen.dot_margin)
-
-                val params = LinearLayout.LayoutParams(dotSize, dotSize)
-                params.setMargins(dotMargin, 0, dotMargin, 0)
-                dotView.layoutParams = params
-
-                dotView.setBackgroundResource(if (i == currentPosition) R.drawable.dot_selected else R.drawable.dot_unselected)
-                dotIndicator.addView(dotView)
-
-            }
-
-        }*/
 }
