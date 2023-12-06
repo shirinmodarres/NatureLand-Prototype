@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toolbar
@@ -17,6 +18,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -26,21 +30,35 @@ import com.example.nature_land.model.Banner
 import com.example.nature_land.model.HomeItem
 import com.example.nature_land.ui.BannerAdapter
 import com.example.nature_land.ui.MainAdapter
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        setSupportActionBar(findViewById(R.id.Toolbar))
+
         val customFont = Typeface.createFromAsset(assets, "Panton-BlackCaps.otf")
+
+        //Toolbar
+        setSupportActionBar(findViewById(R.id.Toolbar))
         val toolbarTitle:TextView=findViewById(R.id.toolbar_title)
         toolbarTitle.typeface=customFont
+
+        //Refresher
         val swipeContainer:SwipeRefreshLayout = findViewById(R.id.swipeContainer)
         swipeContainer.setColorSchemeResources(R.color.selected_dot_color)
         swipeContainer.setOnRefreshListener {
             swipeContainer.isRefreshing = false
         }
+
+        //navigation menu
+        val mainDrawer: DrawerLayout = findViewById(R.id.main_drawer)
+        val menuIcon :ImageView = findViewById(R.id.menu_icon)
+        menuIcon.setOnClickListener {
+            mainDrawer.openDrawer(GravityCompat.START)
+        }
+
         init()
     }
 
